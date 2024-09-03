@@ -44,7 +44,7 @@ func main() {
 		val, err := rdb.Get(redisVisitsKey).Result()
 		if err != nil {
 			if errors.Is(err, redis.Nil) {
-				l.Printf("%q key doesn't existin in Redis yet", redisVisitsKey)
+				l.Printf("%q key doesn't exist in Redis yet", redisVisitsKey)
 
 				val = "0"
 			} else {
