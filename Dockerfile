@@ -1,4 +1,4 @@
-FROM golang:1.21
+FROM golang:1.21.13-bullseye
 
 WORKDIR /usr/src/app
 
@@ -8,5 +8,6 @@ RUN go mod download && go mod verify
 COPY . .
 RUN go build -v -o /usr/local/bin/app cmd/main.go
 
+EXPOSE 8080
 
 CMD ["app"]
