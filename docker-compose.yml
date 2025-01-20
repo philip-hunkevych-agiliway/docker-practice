@@ -5,6 +5,10 @@ services:
       restart: 'on-failure'
     app:
       build: .
+      # in case we need to use .dev dockerfile
+      #build:
+      # context: .
+      # dockerfile: Dockerfile.dev
       restart: 'on-failure'
       ports:
         - '8080:8080'
