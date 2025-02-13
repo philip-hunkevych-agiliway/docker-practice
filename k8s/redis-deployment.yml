@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-redis-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: app-redis
+  template:
+    metadata:
+      labels:
+        component: app-redis
+    spec:
+      volumes:
+        - name: redis-storage
+          persistentVolumeClaim:
+            claimName: database-persistent-volume-claim
+      containers:
+        - name: redis
+          image: redis
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data # TODO: REFACTOR TO REDIS
+              name: redis-storage

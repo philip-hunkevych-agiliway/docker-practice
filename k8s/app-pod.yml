@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: visits-app
+  labels:
+    component: app
+spec:
+  containers:
+    - name: visits-app
+      image: pandaemoniumplaza/docker-practice
+      ports:
+        - containerPort: 8080
